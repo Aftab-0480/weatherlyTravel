@@ -1,0 +1,80 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #121212;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+}
+
+.container {
+  background: white;
+  max-width: 550px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #00796b;
+}
+
+label {
+  display: block;
+  margin: 8px 0;
+}
+
+fieldset {
+  border: 1px solid #ccc;
+  margin: 15px 0;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+button {
+  background-color: #00796b;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #004d40;
+}
+
+#resultBox {
+  margin-top: 20px;
+  padding: 15px;
+  background: #d0f0e8;
+  border-radius: 8px;
+  font-weight: bold;
+  text-align: left;
+}
+
+#warningBox {
+  margin-top: 10px;
+  color: red;
+  font-weight: bold;
+}
+
+#toast {
+  visibility: hidden;
+  min-width: 250px;
+  background-color: #323232;
+  color: #fff;
+  text-align: center;
+  border-radius: 8px;
+  padding: 16px;
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.5s, visibility 0.5s;
+}
+#toast.show {
+  visibility: visible;
+  opacity: 1;
+}
