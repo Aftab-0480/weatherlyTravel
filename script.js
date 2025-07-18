@@ -8,11 +8,11 @@ const dislikeCold = document.getElementById("dislikeCold");
 const likeRain = document.getElementById("likeRain");
 const likeCold = document.getElementById("likeCold");
 
+const preferredTempInput = document.getElementById("preferredTemp");
 const monthSelect = document.getElementById("month");
 const suggestBtn = document.getElementById("suggestBtn");
 const resultBox = document.getElementById("resultBox");
 const toast = document.getElementById("toast");
-const errorMsg = document.getElementById("errorMsg");
 
 function showToast(message) {
   toast.textContent = message;
@@ -20,14 +20,9 @@ function showToast(message) {
   setTimeout(() => toast.classList.remove("show"), 3000);
 }
 
-function showError(message) {
-  errorMsg.textContent = message;
-  errorMsg.classList.add("visible");
-  setTimeout(() => errorMsg.classList.remove("visible"), 3000);
-}
-
 suggestBtn.addEventListener("click", () => {
   const selectedMonth = parseInt(monthSelect.value);
+  const preferredTemp = parseInt(preferredTempInput.value);
 
   const dislikes = {
     rain: dislikeRain.checked,
@@ -44,7 +39,7 @@ suggestBtn.addEventListener("click", () => {
   const atLeastOneDislike = Object.values(dislikes).some(val => val);
 
   if (!selectedMonth || !atLeastOneDislike) {
-    showError("❗ Please select both a travel month and at least one dislike.");
+    resultBox.innerHTML = "❗ Please select both a travel month and at least one dislike.";
     return;
   }
 
@@ -58,7 +53,6 @@ suggestBtn.addEventListener("click", () => {
     if (!monthData) continue;
 
     const { temp, humidity, weather } = monthData;
-
     let penalty = 0;
 
     if (dislikes.heat && temp >= 30) penalty++;
@@ -67,7 +61,13 @@ suggestBtn.addEventListener("click", () => {
     if (dislikes.rain && weather.includes("rain")) penalty++;
 
     if (penalty === 0) {
-      matches.push({ city, temp, humidity, weather });
+      if (!isNaN(preferredTemp)) {
+        if (Math.abs(temp - preferredTemp) <= 3) {
+          matches.push({ city, temp, humidity, weather });
+        }
+      } else {
+        matches.push({ city, temp, humidity, weather });
+      }
     }
   }
 
