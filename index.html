@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weatherwise India</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="toast">Preferences saved!</div>
+  <div class="container">
+    <h1>Weatherwise India 🌤️</h1>
+    <p>Select your weather preferences and travel month:</p>
+
+    <fieldset>
+      <legend><strong>Dislikes</strong></legend>
+      <label><input type="checkbox" id="dislikeRain" /> Dislike Rain</label>
+      <label><input type="checkbox" id="dislikeHumidity" /> Dislike Humidity</label>
+      <label><input type="checkbox" id="dislikeHeat" /> Dislike Heat</label>
+      <label><input type="checkbox" id="dislikeCold" /> Dislike Cold</label>
+    </fieldset>
+
+    <fieldset>
+      <legend><strong>Likes (Optional)</strong></legend>
+      <label><input type="checkbox" id="likeRain" /> Like Rain</label>
+      <label><input type="checkbox" id="likeCold" /> Like Cold</label>
+    </fieldset>
+
+    <label for="month"><strong>Select Month:</strong></label>
+    <select id="month">
+      <option value="">--Select Month--</option>
+      <option value="1">January</option>
+      <option value="2">February</option>
+      <option value="3">March</option>
+      <option value="4">April</option>
+      <option value="5">May</option>
+      <option value="6">June</option>
+      <option value="7">July</option>
+      <option value="8">August</option>
+      <option value="9">September</option>
+      <option value="10">October</option>
+      <option value="11">November</option>
+      <option value="12">December</option>
+    </select>
+
+    <br /><br />
+    <button id="suggestBtn">Suggest Me Places</button>
+
+    <div id="warningBox"></div>
+    <div id="resultBox"></div>
+  </div>
+
+  <script src="climateData.js" type="module"></script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
